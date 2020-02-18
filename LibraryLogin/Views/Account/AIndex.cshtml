@@ -1,0 +1,78 @@
+﻿@model LibraryLogin.Models.Book
+@{
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div class="container">
+        <div class="row m-3">
+            <div class="col-sm-6">
+                <div class="d-flex justify-content-between m-">
+                    <a href="/Account/PageDown"><i class="fas fa-arrow-left"></i></a>
+                    @if (ViewBag.Books.Count > ViewBag.page + 10)
+                    {
+                        <a href="/Account/PageUp"><i class="fas fa-arrow-right"></i></a>
+                    }
+                </div>
+                @if (ViewBag.Books.Count > 0 && ViewBag.Books != null)
+                {
+                    <table class="table table-striped border">
+                        <thead>
+                            <tr>
+                                <th>Название</th>
+                                <th>Автор</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @BookList(ViewBag.Books, ViewBag.page)
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="alert alert-danger mt-1">
+                        Поиск не дал результатов
+                    </p>
+                }
+            </div>
+            <div class="col-sm-3">
+                <h5>Поиск по атрибутам</h5>
+                @using (Html.BeginForm("Filter", "Account", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        @Html.HiddenFor(m => m.id, new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Name, new { placeholder = "Название книги", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.Author, new { placeholder = "ФИО автора", @class = "form-control" })
+                    </div>
+                    <button type="submit" class="btn btn-success">Найти</button>
+                }
+            </div>
+            @Html.Action("Index", "Description", new { defBook = new LibraryLogin.Models.Book("0", "0", "0", "0", "0") })
+        </div>
+    </div> 
+</body>  
+</html>
+
+
+
+
+@helper BookList(List<LibraryLogin.Models.Book> books, int pageNum)
+{
+   int j = 0;
+        for (int i = pageNum; j < 10 && i < books.Count && pageNum < books.Count; j++, i++)
+        {
+            <tr>
+                <td> @Html.ActionLink(books[i].Name, "ShowBookDetails", "Description", new { book_id = books[i].id }, null) </td>
+                <td> @books[i].Author </td>
+                <td> @Html.ActionLink("Взять", "OrderBook", "Account", new { book_id = books[i].id }, new { onclick = "myFunction" }) </td>
+            </tr>
+        }
+}

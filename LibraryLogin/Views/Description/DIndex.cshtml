@@ -1,0 +1,33 @@
+﻿@model LibraryLogin.Models.Book
+
+<div class="col-sm-3">
+    @if (Model != null)
+    {
+        <h5>Подробнее о книге</h5>
+        <ul class="list-group">
+            <li class="list-group-item active">
+                
+                <p class = "font-weight-bold">Название:</p>
+                <span>@Model.Name</span>
+            </li>
+            <li class="list-group-item">
+                <p class = "font-weight-bold">Автор:</p>
+                <span>@Model.Author</span>
+            </li>
+            <li class="list-group-item">
+                <p class = "font-weight-bold">Издательство:</p>
+                <span>@Model.Publiching</span>
+            </li>
+            <li class="list-group-item">
+                <p class = "font-weight-bold">Количество:</p>
+                <span>@Model.Amount</span>
+            </li>
+        </ul>
+    }
+    else { 
+        <p>df</p>
+    }
+
+</div>
+
+

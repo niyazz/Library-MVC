@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href='@Url.Content("~/Content/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <link href='@Url.Content("~/Content/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <script src='@Url.Content("~/Scripts/bootstrap.min.js")'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="@Url.Content("~/Content/Modal.css")" rel="stylesheet" type="text/css" />
+    <script src='@Url.Content("~/Scripts/ModalLogic.js")'></script>
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark justify-content-center">
+        <a class="navbar-brand" href="#"><i class="fas fa-book-open"></i></a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                @Html.ActionLink("Books", "Index", "Account", null,  new { @class = "nav-link" })
+            </li>
+            <li class="nav-item">
+                @Html.ActionLink("Account", "Index", "User", null, new { @class = "nav-link" })
+            </li>
+        </ul>
+    </nav>
+            @RenderBody()
+</body>
+</html>

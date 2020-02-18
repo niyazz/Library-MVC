@@ -1,0 +1,24 @@
+﻿@model LibraryLogin.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>OrderBook</title>
+    <link href='@Url.Content("~/Content/bootstrap.min.css")' rel="stylesheet" type="text/css" />
+    <script src='@Url.Content("~/Scripts/bootstrap.min.js")'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container m-5"> 
+        <h1 class="display-4">Приятного чтения, @Model.Name!</h1>
+        <div class = "ml-3">
+            <p class="lead">Вы взяли книгу под названием <i class="fas fa-book ml-1 mr-1"></i><strong>@ViewBag.OrderedBook.Name</strong>.</p>
+            @Html.ActionLink("Взять еще одну книгу", "Index", "Account", new { @class = "btn btn-success btn-lg" })
+        </div>
+    </div>
+</body>
+</html>
